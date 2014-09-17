@@ -8,10 +8,11 @@ send reload command to the necessary services.
 
 ### List of environment variables
 
-* `ETCDCTL_PEERS` - address of etcd service to send reload signal. Optional.
+* `ETCDCTL_PEERS` - address of etcd service to send reload signal. Recommended.
 
 ### Example
 ```
-docker run --rm -it -v /mnt/logs:/mnt/logs -v /mnt/logrotate.status:/var/lib/logrotate.status sergeyzh/logrotate
+touch /mnt/logrotate.status
+docker run --rm -it --volumes-from=configurator -v /mnt/logs:/mnt/logs -v /mnt/logrotate.status:/var/lib/logrotate.status sergeyzh/logrotate
 ```
 
